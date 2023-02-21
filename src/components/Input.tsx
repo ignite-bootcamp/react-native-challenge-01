@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { StyleSheet, TextInput } from 'react-native'
+import { StyleSheet, TextInput, TextInputProps } from 'react-native'
 import { theme } from '../styles/theme'
 
-export function Input() {
+export function Input(props: TextInputProps) {
   const [isInputFocused, setIsInputFocused] = useState(false)
   const focusStyle = isInputFocused ? styles.inputFocus : styles.inputBlur
   return (
@@ -13,6 +13,7 @@ export function Input() {
       onFocus={() => setIsInputFocused(true)}
       onBlur={() => setIsInputFocused(false)}
       cursorColor="#fff"
+      {...props}
     />
   )
 }

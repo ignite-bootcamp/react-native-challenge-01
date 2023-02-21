@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {
+  Alert,
   FlatList,
   Image,
   StyleSheet,
@@ -16,13 +17,24 @@ import { ListEmptyComponent } from '../components/ListEmptyComponent'
 import { Todo, TodoProps } from '../components/Todo'
 
 export function Home() {
-  const [todos, setTodos] = useState<TodoProps[]>([
-    {
-      title: 'Batata',
-      completed: true,
+  const [todos, setTodos] = useState<TodoProps[]>([])
+  const [inputText, setInputText] = useState('')
+
+  const completedTodos = todos.filter((todo) => todo.completed)
+
+  function handleCreateTodo() {
+    if (!inputText) {
+      return Alert.alert('Todo', 'Não foi possível criar o todo')
+    }
+
+    const newTodo = {
+      title: inputText,
+      completed: false,
       id: Date.now(),
-    },
-  ])
+    }
+
+    setTodos((prevState) => [...prevState, newTodo])
+  }
 
   return (
     <View style={styles.container}>
@@ -33,8 +45,12 @@ export function Home() {
 
       <View style={styles.content}>
         <View style={styles.form}>
-          <Input />
-          <TouchableOpacity style={styles.button} activeOpacity={0.5}>
+          <Input onChangeText={setInputText} value={inputText} />
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.5}
+            onPress={handleCreateTodo}
+          >
             <Feather name="plus-circle" size={16} color="white" />
           </TouchableOpacity>
         </View>
@@ -44,7 +60,10 @@ export function Home() {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => <Todo {...item} />}
           ListHeaderComponent={() => (
-            <ListHeaderComponent createdCount={8} doneCount={10} />
+            <ListHeaderComponent
+              createdCount={todos.length}
+              doneCount={completedTodos.length}
+            />
           )}
           ListEmptyComponent={ListEmptyComponent}
           style={styles.list}
