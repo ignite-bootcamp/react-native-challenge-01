@@ -49,6 +49,11 @@ export function Home() {
     )
   }
 
+  function handleDeleteTodo(todoId: number) {
+    const newTodos = todos.filter((todo) => todo.id !== todoId)
+    setTodos(newTodos)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -72,7 +77,11 @@ export function Home() {
           data={todos}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <Todo {...item} onComplete={() => handleCompleteTodo(item.id)} />
+            <Todo
+              {...item}
+              onDelete={() => handleDeleteTodo(item.id)}
+              onComplete={() => handleCompleteTodo(item.id)}
+            />
           )}
           ListHeaderComponent={() => (
             <ListHeaderComponent
