@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     color: theme.colors.gray['300'],
     height: 54,
     padding: 16,
-    marginTop: -27,
-    marginHorizontal: 24,
+    flex: 1,
   },
 
   inputBlur: {

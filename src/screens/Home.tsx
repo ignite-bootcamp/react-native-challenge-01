@@ -1,7 +1,9 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Feather } from '@expo/vector-icons'
 
 import logoImg from '../../assets/logo.png'
 import { Input } from '../components/Input'
+import { theme } from '../styles/theme'
 
 export function Home() {
   return (
@@ -12,7 +14,12 @@ export function Home() {
       </View>
 
       <View style={styles.content}>
-        <Input />
+        <View style={styles.form}>
+          <Input />
+          <TouchableOpacity style={styles.button} activeOpacity={0.5}>
+            <Feather name="plus-circle" size={16} color="white" />
+          </TouchableOpacity>
+        </View>
         <Text>Hello home</Text>
       </View>
     </View>
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    height: 176,
+    height: 174,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -37,5 +44,21 @@ const styles = StyleSheet.create({
 
   logo: {
     marginBottom: 70,
+    marginTop: 24,
+  },
+
+  form: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: -27,
+    paddingHorizontal: 24,
+  },
+
+  button: {
+    backgroundColor: theme.colors.blueDark,
+    padding: 18,
+    borderRadius: 6,
+    marginLeft: 4,
   },
 })
