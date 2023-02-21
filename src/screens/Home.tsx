@@ -34,6 +34,7 @@ export function Home() {
     }
 
     setTodos((prevState) => [...prevState, newTodo])
+    setInputText('')
   }
 
   return (
@@ -66,6 +67,9 @@ export function Home() {
             />
           )}
           ListEmptyComponent={ListEmptyComponent}
+          ItemSeparatorComponent={() => (
+            <View style={{ marginVertical: 8 }}></View>
+          )}
           style={styles.list}
         />
       </View>
