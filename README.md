@@ -1,6 +1,12 @@
 <h1 align='center'>todo</h1>
 <p align='center'>This challenge is for practice the basics of React and React Native like states, components, lists, input of data	and props.</p>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/55333929/220276884-cb492f78-1545-48ba-aae4-5d7a81243864.png" width="250"/>
+<img src="https://user-images.githubusercontent.com/55333929/220277111-41d47044-a78b-4884-857f-ca431a363008.png" width="250"/>
+</div>
+
+
 ## 💄 Layout
 
 - [Layout no Figma](<https://www.figma.com/file/crbgOBNTOU1CG3WbmiSWBe/ToDo-List-(Copy)?node-id=0%3A1&t=WhRUBbPuTVRK8INo-1>)
