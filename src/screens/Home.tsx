@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 import logoImg from '../../assets/logo.png'
+import { Input } from '../components/Input'
 
 export function Home() {
   return (
@@ -11,6 +12,7 @@ export function Home() {
       </View>
 
       <View style={styles.content}>
+        <Input />
         <Text>Hello home</Text>
       </View>
     </View>
