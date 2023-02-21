@@ -1,11 +1,21 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useState } from 'react'
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
 import logoImg from '../../assets/logo.png'
 import { Input } from '../components/Input'
 import { theme } from '../styles/theme'
+import { ListHeaderComponent } from '../components/ListHeaderComponent'
 
 export function Home() {
+  const [todos, setTodos] = useState([])
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -20,7 +30,14 @@ export function Home() {
             <Feather name="plus-circle" size={16} color="white" />
           </TouchableOpacity>
         </View>
-        <Text>Hello home</Text>
+
+        <FlatList
+          data={todos}
+          ListHeaderComponent={() => (
+            <ListHeaderComponent createdCount={8} doneCount={10} />
+          )}
+          style={styles.list}
+        />
       </View>
     </View>
   )
@@ -32,7 +49,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    height: 174,
+    height: 134,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -60,5 +77,10 @@ const styles = StyleSheet.create({
     padding: 18,
     borderRadius: 6,
     marginLeft: 4,
+  },
+
+  list: {
+    paddingHorizontal: 24,
+    marginTop: 32,
   },
 })
