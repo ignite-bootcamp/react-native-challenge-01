@@ -8,7 +8,7 @@ export function Input() {
   return (
     <TextInput
       placeholder="Adicione uma nova tarefa"
-      placeholderTextColor="#808080"
+      placeholderTextColor={theme.colors.gray['300']}
       style={{ ...styles.input, ...focusStyle }}
       onFocus={() => setIsInputFocused(true)}
       onBlur={() => setIsInputFocused(false)}

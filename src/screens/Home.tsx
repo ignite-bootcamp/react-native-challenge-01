@@ -13,9 +13,16 @@ import { Input } from '../components/Input'
 import { theme } from '../styles/theme'
 import { ListHeaderComponent } from '../components/ListHeaderComponent'
 import { ListEmptyComponent } from '../components/ListEmptyComponent'
+import { Todo, TodoProps } from '../components/Todo'
 
 export function Home() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState<TodoProps[]>([
+    {
+      title: 'Batata',
+      completed: true,
+      id: Date.now(),
+    },
+  ])
 
   return (
     <View style={styles.container}>
@@ -34,6 +41,8 @@ export function Home() {
 
         <FlatList
           data={todos}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => <Todo {...item} />}
           ListHeaderComponent={() => (
             <ListHeaderComponent createdCount={8} doneCount={10} />
           )}
