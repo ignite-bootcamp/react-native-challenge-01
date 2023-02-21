@@ -1,15 +1,22 @@
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { theme } from '../styles/theme'
 
 type CheckboxProps = {
   done?: boolean
-}
+} & TouchableOpacityProps
 
-export function Checkbox({ done }: CheckboxProps) {
+export function Checkbox({ done, ...rest }: CheckboxProps) {
   const checkboxStyles = done ? styles.done : styles.todo
   return (
-    <TouchableOpacity style={{ ...styles.container, ...checkboxStyles }}>
+    <TouchableOpacity
+      style={{ ...styles.container, ...checkboxStyles }}
+      {...rest}
+    >
       {!!done && (
         <Feather name="check" size={12} color={theme.colors.gray['100']} />
       )}

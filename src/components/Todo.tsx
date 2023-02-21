@@ -7,15 +7,17 @@ export type TodoProps = {
   title: string
   completed: boolean
   id: number
+  onComplete?: () => void
+  onDelete?: () => void
 }
 
-export function Todo({ title, completed }: TodoProps) {
+export function Todo({ title, completed, onDelete, onComplete }: TodoProps) {
   const textStyles = completed ? styles.textCompleted : styles.textTodo
   return (
     <View style={styles.container}>
-      <Checkbox done={completed} />
+      <Checkbox done={completed} onPress={onComplete} />
       <Text style={{ ...styles.text, ...textStyles }}>{title}</Text>
-      <TouchableOpacity style={styles.deleteButton}>
+      <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
         <Feather name="trash-2" size={16} color={theme.colors.gray['300']} />
       </TouchableOpacity>
     </View>

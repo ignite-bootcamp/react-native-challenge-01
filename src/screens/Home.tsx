@@ -37,6 +37,18 @@ export function Home() {
     setInputText('')
   }
 
+  function handleCompleteTodo(todoId: number) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, completed: !todo.completed }
+        } else {
+          return todo
+        }
+      }),
+    )
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -59,7 +71,9 @@ export function Home() {
         <FlatList
           data={todos}
           keyExtractor={(item) => String(item.id)}
-          renderItem={({ item }) => <Todo {...item} />}
+          renderItem={({ item }) => (
+            <Todo {...item} onComplete={() => handleCompleteTodo(item.id)} />
+          )}
           ListHeaderComponent={() => (
             <ListHeaderComponent
               createdCount={todos.length}
