@@ -12,6 +12,7 @@ import logoImg from '../../assets/logo.png'
 import { Input } from '../components/Input'
 import { theme } from '../styles/theme'
 import { ListHeaderComponent } from '../components/ListHeaderComponent'
+import { ListEmptyComponent } from '../components/ListEmptyComponent'
 
 export function Home() {
   const [todos, setTodos] = useState([])
@@ -36,6 +37,7 @@ export function Home() {
           ListHeaderComponent={() => (
             <ListHeaderComponent createdCount={8} doneCount={10} />
           )}
+          ListEmptyComponent={ListEmptyComponent}
           style={styles.list}
         />
       </View>

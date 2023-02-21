@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     height: 54,
     padding: 16,
     flex: 1,
+    fontSize: 16,
   },
 
   inputBlur: {
