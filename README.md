@@ -44,4 +44,4 @@ Once your pull request has been merged, you can delete your branch.
 
 ## 📝 License
 
-This project is under the MIT license. See the [LICENSE](https://github.com/guivictorr/CURRENT_REPOSITORY/blob/master/LICENSE) file for more details.
+This project is under the MIT license. See the [LICENSE](https://github.com/ignite-bootcamp/react-native-challenge-01/blob/main/LICENSE.md) file for more details.
